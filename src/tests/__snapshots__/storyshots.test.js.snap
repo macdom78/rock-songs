@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Grid Default Story 1`] = `
+<div
+  className="css-n3l11z"
+>
+  <div
+    className="css-son8gn"
+  />
+  <div
+    className="css-son8gn"
+  />
+  <div
+    className="css-son8gn"
+  />
+  <div
+    className="css-son8gn"
+  />
+  <div
+    className="css-son8gn"
+  />
+</div>
+`;
+
+exports[`Storyshots Components/Image Default Story 1`] = `
+<img
+  alt="An Image"
+  src="https://is5-ssl.mzstatic.com/image/thumb/Music117/v4/d8/fe/b2/d8feb259-1e17-4f18-e120-4c38557f6714/source/100x100bb.jpg"
+/>
+`;
+
+exports[`Storyshots Components/LinkButton Default Story 1`] = `
+<a
+  href="https://www.google.com"
+  target=""
+>
+  A Link
+</a>
+`;
+
+exports[`Storyshots Components/LinkButton Open In Newtab 1`] = `
+<a
+  href="https://www.google.com"
+  target="_blank"
+>
+  A Link
+</a>
+`;
+
+exports[`Storyshots Components/SongCard Default Story 1`] = `
+<div
+  className="css-o2j9ze"
+>
+  <div
+    className="css-1fc8vz0"
+  >
+    <img
+      alt="I Am Rock"
+      src="https://is5-ssl.mzstatic.com/image/thumb/Music117/v4/d8/fe/b2/d8feb259-1e17-4f18-e120-4c38557f6714/source/100x100bb.jpg"
+    />
+  </div>
+  <div
+    className="css-0"
+  >
+    <h4
+      className="css-r44k6v"
+    >
+      I Am Rock
+    </h4>
+    <p
+      className="css-r44k6v"
+    >
+      Rock
+    </p>
+    <p
+      className="css-r44k6v"
+    >
+      $1.29
+    </p>
+    <p
+      className="css-k6ylb4"
+    >
+      3min(s) 50sec(s)
+    </p>
+    <p
+      className="css-k6ylb4"
+    >
+      06/09/2005
+    </p>
+    <a
+      href="/?path=/story/components-songcard--with-extra-details"
+      target=""
+    >
+      A Link
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/SongCard With Extra Details 1`] = `
+<div
+  className="css-o2j9ze"
+>
+  <div
+    className="css-1fc8vz0"
+  >
+    <img
+      alt="I Am Rock"
+      src="https://is5-ssl.mzstatic.com/image/thumb/Music117/v4/d8/fe/b2/d8feb259-1e17-4f18-e120-4c38557f6714/source/100x100bb.jpg"
+    />
+  </div>
+  <div
+    className="css-0"
+  >
+    <h4
+      className="css-r44k6v"
+    >
+      I Am Rock
+    </h4>
+    <p
+      className="css-r44k6v"
+    >
+      Rock
+    </p>
+    <p
+      className="css-r44k6v"
+    >
+      $1.29
+    </p>
+    <p
+      className="css-6mrnw2"
+    >
+      3min(s) 50sec(s)
+    </p>
+    <p
+      className="css-6mrnw2"
+    >
+      06/09/2005
+    </p>
+    <a
+      href="https://music.apple.com/us/album/i-am-rock/1233327608?i=1233328913&uo=4"
+      target="_blank"
+    >
+      A Link
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Wrap Default Story 1`] = `
+<div
+  className="css-3l9dzo"
+>
+  <div
+    className="css-ej2tj7"
+  />
+</div>
+`;
+
+exports[`Storyshots Containers/ErrorPage Default Story 1`] = `
+<div>
+  Something went wrong :(
+</div>
+`;
