@@ -5,12 +5,12 @@ import { fetchHelper } from "../../helpers/fetch-helper";
 import { SongsList } from "../SongsList";
 import mockSongData from "../../helpers/mock-data";
 
-jest.mock("../../helpers/fetch-helper", () => ({
-  fetchHelper: jest.fn().mockImplementation(() => Promise.resolve(mockSongData))
-}));
-
 jest.mock("../../redux/actions", () => ({
   setRockSongs: jest.fn()
+}));
+
+jest.mock("../../helpers/fetch-helper", () => ({
+  fetchHelper: jest.fn().mockImplementation(() => Promise.resolve(mockSongData))
 }));
 
 afterEach(() => {
@@ -27,7 +27,7 @@ test("`SongsList` renders with all the songs", async () => {
 });
 
 test("`SongsList` does not display any songs if none returned from fetch", async () => {
-  const { container, getByText } = await render(
+  const { container } = await render(
     <SongsList songData={{ rockSongs: {} }} setRockSongs={setRockSongs} />
   );
 
@@ -53,11 +53,9 @@ test("`SongsList` makes call to fetch-helper", async () => {
 });
 
 test("`SongsList` to send data to redux store after fetching", async () => {
-  const { getByText } = await render(
+  await render(
     <SongsList songData={mockSongData} setRockSongs={setRockSongs} />
   );
-
-  await waitForElement(() => getByText("Rock"));
 
   expect(setRockSongs.mock.calls).toHaveLength(1);
 });
