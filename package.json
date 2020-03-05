@@ -20,7 +20,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:coverage": "react-scripts test --coverage",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
@@ -56,7 +56,8 @@
       "!**/*.stories.{js,jsx}",
       "!**/*.test.{js,jsx}",
       "!src/helpers/constants.js",
-      "!src/redux/store.js"
+      "!src/redux/store.js",
+      "!src/serviceWorker.js"
     ],
     "coverageThreshold": {
       "global": {

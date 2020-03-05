@@ -7,17 +7,17 @@ import Grid from "../components/Grid";
 import SongCard from "../components/SongCard";
 import Wrap from "../components/Wrap";
 
-const SongsList = ({
+export const SongsList = ({
   navigate,
   songData: { results: songs = [] },
   setRockSongs
 }) => {
   const fetchSongData = async () => {
-    const songData = await fetchHelper({
+    const fetchedSongData = await fetchHelper({
       url: "https://itunes.apple.com/search?term=rock&media=music",
       navigate
     });
-    setRockSongs(songData);
+    setRockSongs(fetchedSongData);
   };
 
   useEffect(() => {

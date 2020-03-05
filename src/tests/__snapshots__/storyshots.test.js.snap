@@ -147,6 +147,22 @@ exports[`Storyshots Components/SongCard With Extra Details 1`] = `
 </div>
 `;
 
+exports[`Storyshots Components/SongDetail Default Story 1`] = `
+<p
+  className="css-r44k6v"
+>
+  A detail
+</p>
+`;
+
+exports[`Storyshots Components/SongHeader Default Story 1`] = `
+<h4
+  className="css-r44k6v"
+>
+  A header
+</h4>
+`;
+
 exports[`Storyshots Components/Wrap Default Story 1`] = `
 <div
   className="css-3l9dzo"

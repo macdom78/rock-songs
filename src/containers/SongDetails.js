@@ -5,7 +5,7 @@ import { getRockSongById } from "../redux/selectors";
 import Wrap from "../components/Wrap";
 import SongCard from "../components/SongCard";
 
-const SongDetails = ({ song }) => {
+export const SongDetails = ({ song }) => {
   const { trackViewUrl } = song;
   return (
     <Wrap>
