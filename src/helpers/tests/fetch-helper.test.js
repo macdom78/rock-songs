@@ -13,6 +13,7 @@ afterEach(() => {
 test("returns song data if request has been successful", done => {
   function mockCallback(_, data) {
     try {
+      expect(jsonp).toHaveBeenCalledWith(url, {}, mockCallback);
       expect(data).toBe(mockSongData);
       done();
     } catch (error) {
@@ -20,7 +21,7 @@ test("returns song data if request has been successful", done => {
     }
   }
 
-  jsonp.mockImplementationOnce(() => mockCallback(null, mockSongData));
+  jsonp.mockImplementationOnce((url, opt, cb) => cb(null, mockSongData));
 
   fetchHelper({
     url,
@@ -38,7 +39,7 @@ test("returns error data if error fetching", done => {
     }
   }
 
-  jsonp.mockImplementationOnce(() => mockCallback("404"));
+  jsonp.mockImplementationOnce((url, opt, cb) => cb("404"));
 
   fetchHelper({
     url,
