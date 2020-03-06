@@ -64,7 +64,7 @@ The following approach has been taken for testing the application:
 
 - React testing library is used for unit testing all components.
 - Snapshot testing used to test all the Storybook stories in the application.
-- Coverage requirements set at 90% across the board - coverage can be seen by running the appropriate [script](#npm-run-test:coverage)
+- Coverage requirements set at 90% across the board - coverage can be seen by running `npm run test:coverage`
 
 ## Future Improvements
 
