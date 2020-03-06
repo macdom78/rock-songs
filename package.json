@@ -21,7 +21,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "react-scripts test --coverage --watchAll=false",
-    "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
@@ -55,6 +54,8 @@
       "src/**/*.{js,jsx}",
       "!**/*.stories.{js,jsx}",
       "!**/*.test.{js,jsx}",
+      "!src/redux/reducers/index.js",
+      "!src/index.js",
       "!src/helpers/constants.js",
       "!src/redux/store.js",
       "!src/serviceWorker.js"

@@ -6,14 +6,13 @@ import {
   createMemorySource,
   LocationProvider
 } from "@reach/router";
-import fetchMock from "fetch-mock";
 import App from "../App";
 import mockSongData from "../helpers/mock-data";
 import { mockStore } from "../helpers/mock-store";
 
-const url = "https://itunes.apple.com/search?term=rock&media=music";
-
-fetchMock.mock(url, mockSongData);
+jest.mock("../helpers/fetch-helper", () => ({
+  fetchHelper: jest.fn().mockImplementation(() => Promise.resolve(mockSongData))
+}));
 
 jest.mock("../redux/actions", () => ({
   setRockSongs: jest.fn()
@@ -48,4 +47,15 @@ test("full app rendering/navigating", async () => {
 
   await navigate("/song/1233328913");
   expect(getByText("06/09/2005")).toBeInTheDocument();
+});
+
+test("error page loads correctly", () => {
+  const { getByText } = renderWithRouter(
+    <Provider store={mockStore}>
+      <App />
+    </Provider>,
+    { route: "/error" }
+  );
+
+  expect(getByText("Something went wrong :(")).toBeInTheDocument();
 });
