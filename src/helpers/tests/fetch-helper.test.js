@@ -1,27 +1,47 @@
-import fetchMock from "fetch-mock";
 import { fetchHelper } from "../fetch-helper";
+import jsonp from "jsonp";
 import mockSongData from "../mock-data";
 
 const url = "https://itunes.apple.com/search?term=rock&media=music";
-const navigate = jest.fn();
 
-test("returns song data if request has been successful", async () => {
-  fetchMock.mock(url, mockSongData);
-  const data = await fetchHelper({ url, navigate });
-  expect(data).toEqual(mockSongData);
-  fetchMock.restore();
+jest.mock("jsonp");
+
+afterEach(() => {
+  jest.resetAllMocks();
 });
 
-test("navigates to error page if request returns 500", async () => {
-  fetchMock.mock(url, 500);
-  await fetchHelper({ url, navigate });
-  expect(navigate).toHaveBeenCalledWith("/error");
-  fetchMock.restore();
+test("returns song data if request has been successful", done => {
+  function mockCallback(_, data) {
+    try {
+      expect(data).toBe(mockSongData);
+      done();
+    } catch (error) {
+      done(error);
+    }
+  }
+
+  jsonp.mockImplementationOnce(() => mockCallback(null, mockSongData));
+
+  fetchHelper({
+    url,
+    callback: mockCallback
+  });
 });
 
-test("navigates to error page if request returns 404 not found", async () => {
-  fetchMock.mock(url, 404);
-  await fetchHelper({ url, navigate });
-  expect(navigate).toHaveBeenCalledWith("/error");
-  fetchMock.restore();
+test("returns error data if error fetching", done => {
+  function mockCallback(err) {
+    try {
+      expect(err).toBe("404");
+      done();
+    } catch (error) {
+      done(error);
+    }
+  }
+
+  jsonp.mockImplementationOnce(() => mockCallback("404"));
+
+  fetchHelper({
+    url,
+    callback: mockCallback
+  });
 });

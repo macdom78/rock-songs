@@ -12,12 +12,16 @@ export const SongsList = ({
   songData: { results: songs = [] },
   setRockSongs
 }) => {
-  const fetchSongData = async () => {
-    const fetchedSongData = await fetchHelper({
+  const setSongs = (err, data) => {
+    if (err) return navigate("/error");
+    setRockSongs(data);
+  };
+
+  const fetchSongData = () => {
+    fetchHelper({
       url: "https://itunes.apple.com/search?term=rock&media=music",
-      navigate
+      callback: setSongs
     });
-    setRockSongs(fetchedSongData);
   };
 
   useEffect(() => {

@@ -11,7 +11,9 @@ import mockSongData from "../helpers/mock-data";
 import { mockStore } from "../helpers/mock-store";
 
 jest.mock("../helpers/fetch-helper", () => ({
-  fetchHelper: jest.fn().mockImplementation(() => Promise.resolve(mockSongData))
+  fetchHelper: jest
+    .fn()
+    .mockImplementation(({ callback }) => callback(null, mockSongData))
 }));
 
 jest.mock("../redux/actions", () => ({

@@ -9,8 +9,6 @@ import App from "./App";
 
 const { store, persistor } = createStore();
 
-console.log(persistor);
-
 const rootElement = document.getElementById("root");
 
 render(

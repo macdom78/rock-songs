@@ -1,23 +1,5 @@
-const fetchOptions = {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json"
-  }
-};
+import jsonp from "jsonp";
 
-export const fetchHelper = async ({ url, options, navigate }) => {
-  try {
-    const res = await fetch(url, {
-      ...fetchOptions,
-      ...options
-    });
-
-    if (!res.ok) throw new Error();
-
-    const data = await res.json();
-    return data;
-  } catch (err) {
-    navigate("/error");
-    return {};
-  }
+export const fetchHelper = async ({ url, callback }) => {
+  jsonp(url, {}, callback);
 };

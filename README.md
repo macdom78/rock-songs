@@ -2,16 +2,21 @@
 
 ## Project Overview
 
-Rock Songs is a small project that serves the top 50 Rock songs from the [iTunes Api](https://itunes.apple.com/search?term=rock&media=music).<br />
+[Rock Songs](https://protected-springs-68967.herokuapp.com) is a small project that serves the top 50 Rock songs from the [iTunes Api](https://itunes.apple.com/search?term=rock&media=music).<br />
 
 It is built using [create-react-app](https://create-react-app.dev/docs/getting-started/). It utilises the redux pattern as a global state holder for the results returned from iTunes Api.
 
 ## Quick Links
 
+- [Production](#production)
 - [Technology Used](#technology-used)
 - [Helpful Scripts](#helpful-scripts)
 - [Testing](#testing)
 - [Future Improvement](#future-improvements)
+
+## Production
+
+Rock songs is hosted on Heroku [here](https://protected-springs-68967.herokuapp.com)
 
 ## Technology Used
 
@@ -74,4 +79,3 @@ The following is a list of desired improvements/enhancements:
 - Introduce more a11y features / make sure is as accessible as possible.
 - Add option to search for different terms.
 - Add in CI/[Chromatic](https://www.chromaticqa.com/) to check for any changes to Storybook.
-- Host a production version on AWS / Heroku.
