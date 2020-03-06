@@ -1,18 +1,13 @@
 import React from "react";
-import { render, waitForElement } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import jsonp from "jsonp";
 import { setRockSongs } from "../../redux/actions";
 import { SongsList } from "../SongsList";
 import mockSongData from "../../helpers/mock-data";
 
 const navigate = jest.fn();
 
-beforeEach(() => {
-  jest.mock("../../helpers/fetch-helper", () => ({
-    fetchHelper: jest
-      .fn()
-      .mockImplementation(({ callback }) => callback(null, mockSongData))
-  }));
-});
+jest.mock("jsonp");
 
 jest.mock("../../redux/actions", () => ({
   setRockSongs: jest.fn()
@@ -23,6 +18,8 @@ afterEach(() => {
 });
 
 test("`SongsList` renders with all the songs", () => {
+  jsonp.mockImplementationOnce((url, opt, cb) => cb(null, mockSongData));
+
   const { container, getByText } = render(
     <SongsList
       navigate={navigate}
@@ -31,12 +28,14 @@ test("`SongsList` renders with all the songs", () => {
     />
   );
 
+  expect(setRockSongs).toHaveBeenCalledWith(mockSongData);
   expect(container.children[0].children[0].children).toHaveLength(3);
   expect(getByText("Guns N' Roses")).toBeInTheDocument();
 });
 
-test("`SongsList` renders no songs if no data", async () => {
-  const { queryByText } = render(
+test("`SongsList` reroutes to error page if error from jsonp call", async () => {
+  jsonp.mockImplementationOnce((url, opt, cb) => cb("404", {}));
+  render(
     <SongsList
       navigate={navigate}
       songData={{ rockSongs: {} }}
@@ -44,5 +43,5 @@ test("`SongsList` renders no songs if no data", async () => {
     />
   );
 
-  expect(queryByText("Guns N' Roses")).toBeNull();
+  expect(navigate).toHaveBeenCalledWith("/error");
 });
