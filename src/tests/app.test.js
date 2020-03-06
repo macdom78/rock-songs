@@ -6,19 +6,20 @@ import {
   createMemorySource,
   LocationProvider
 } from "@reach/router";
+import jsonp from "jsonp";
 import App from "../App";
 import mockSongData from "../helpers/mock-data";
 import { mockStore } from "../helpers/mock-store";
 
-jest.mock("../helpers/fetch-helper", () => ({
-  fetchHelper: jest
-    .fn()
-    .mockImplementation(({ callback }) => callback(null, mockSongData))
-}));
+jest.mock("jsonp");
 
 jest.mock("../redux/actions", () => ({
   setRockSongs: jest.fn()
 }));
+
+beforeEach(() => {
+  jsonp.mockImplementation((url, opt, cb) => cb(null, mockSongData));
+});
 
 afterEach(() => {
   jest.resetAllMocks();
