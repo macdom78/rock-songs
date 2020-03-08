@@ -6,10 +6,6 @@ const url = "https://itunes.apple.com/search?term=rock&media=music";
 
 jest.mock("jsonp");
 
-afterEach(() => {
-  jest.resetAllMocks();
-});
-
 test("returns song data if request has been successful", done => {
   function mockCallback(_, data) {
     try {
