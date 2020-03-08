@@ -6,4 +6,6 @@ const BREAKPOINTS = {
   XXL: "1280px"
 };
 
-export { BREAKPOINTS };
+const ERROR_MESSAGE = "Something went wrong :(";
+
+export { BREAKPOINTS, ERROR_MESSAGE };

@@ -13,10 +13,6 @@ jest.mock("../../redux/actions", () => ({
   setRockSongs: jest.fn()
 }));
 
-afterEach(() => {
-  jest.resetAllMocks();
-});
-
 test("`SongsList` renders with all the songs", () => {
   jsonp.mockImplementationOnce((url, opt, cb) => cb(null, mockSongData));
 

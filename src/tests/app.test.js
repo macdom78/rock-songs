@@ -10,6 +10,7 @@ import jsonp from "jsonp";
 import App from "../App";
 import mockSongData from "../helpers/mock-data";
 import { mockStore } from "../helpers/mock-store";
+import { ERROR_MESSAGE } from "../helpers/constants";
 
 jest.mock("jsonp");
 
@@ -17,13 +18,7 @@ jest.mock("../redux/actions", () => ({
   setRockSongs: jest.fn()
 }));
 
-beforeEach(() => {
-  jsonp.mockImplementation((url, opt, cb) => cb(null, mockSongData));
-});
-
-afterEach(() => {
-  jest.resetAllMocks();
-});
+jsonp.mockImplementation((url, opt, cb) => cb(null, mockSongData));
 
 const renderWithRouter = (
   ui,
@@ -60,5 +55,5 @@ test("error page loads correctly", () => {
     { route: "/error" }
   );
 
-  expect(getByText("Something went wrong :(")).toBeInTheDocument();
+  expect(getByText(ERROR_MESSAGE)).toBeInTheDocument();
 });
